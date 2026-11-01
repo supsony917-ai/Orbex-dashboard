@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbex Dashboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#090b12;color:#f2f5ff;min-height:100vh}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:245px;background:#10141e;border-right:1px solid #252c3a;padding:25px 16px;flex-shrink:0}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:38px}
+.brand img{width:48px;height:48px;border-radius:13px;object-fit:cover}
+.brand h2{font-size:21px;letter-spacing:2px}
+.brand small{color:#638dff;font-size:10px;letter-spacing:2px}
+.label{font-size:10px;color:#657087;margin:22px 10px 10px;letter-spacing:2px}
+.nav{display:block;width:100%;padding:13px 12px;border:0;border-radius:9px;background:transparent;color:#aab3c6;text-align:left;font-size:14px;margin:5px 0;cursor:pointer}
+.nav:hover,.nav.active{background:#18243d;color:#75a1ff;border-left:3px solid #3979ff}
+.main{flex:1;padding:32px;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:35px;gap:15px}
+.top h1{font-size:26px}
+.status{color:#75dfa5;font-size:12px}
+.welcome{margin-bottom:28px}
+.welcome p{color:#8994aa;margin-top:9px;font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:#111722;border:1px solid #252d3d;border-radius:14px;padding:22px}
+.card small{color:#8994aa}
+.card h2{font-size:27px;margin-top:13px}
+.card .symbol{font-size:22px;color:#6697ff}
+.section{margin-top:28px}
+.section h2{font-size:18px;margin-bottom:15px}
+.activity{display:flex;justify-content:space-between;gap:10px;padding:16px 0;border-bottom:1px solid #252d3d;color:#aab3c6;font-size:13px}
+.page{display:none}.page.active{display:block}
+.panel{background:#111722;border:1px solid #252d3d;border-radius:14px;padding:22px;margin-bottom:14px}
+.panel p{color:#929db1;margin-top:10px;font-size:14px}
+.action{border:1px solid #356bd5;background:#172c50;color:#a8c5ff;padding:10px 15px;border-radius:8px;margin-top:15px;cursor:pointer}
+footer{margin-top:35px;color:#5e6a80;font-size:11px}
+@media(max-width:750px){.layout{display:block}.sidebar{width:100%;padding:14px;border-right:0;border-bottom:1px solid #252c3d}.brand{margin-bottom:12px}.label{display:none}.nav{display:inline-block;width:auto;margin:3px;padding:10px}.main{padding:22px 15px}.cards{grid-template-columns:1fr}.top h1{font-size:21px}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+ <div class="brand"><img src="orbex-logo.jpg" alt="Orbex Logo"><div><h2>ORBEX</h2><small>CONTROL PANEL</small></div></div>
+ <div class="label">HAUPTMENÜ</div>
+ <button class="nav active" onclick="showPage('home',this)">⌂ Übersicht</button>
+ <button class="nav" onclick="showPage('moderation',this)">🛡 Moderation</button>
+ <button class="nav" onclick="showPage('tickets',this)">🎫 Tickets</button>
+ <button class="nav" onclick="showPage('security',this)">🔒 Sicherheit</button>
+ <div class="label">SYSTEM</div>
+ <button class="nav" onclick="showPage('settings',this)">⚙ Einstellungen</button>
+</aside>
+<main class="main">
+ <div class="top"><h1 id="pageTitle">Übersicht</h1><span class="status">● ORBEX DASHBOARD</span></div>
+ <section id="home" class="page active">
+  <div class="welcome"><h2>Willkommen bei Orbex.</h2><p>Dein Bot. Deine Kontrolle. Alles an einem Ort.</p></div>
+  <div class="cards">
+   <div class="card"><span class="symbol">◉</span><br><small>Discord-Server</small><h2>0</h2></div>
+   <div class="card"><span class="symbol">♙</span><br><small>Mitglieder</small><h2>–</h2></div>
+   <div class="card"><span class="symbol">◆</span><br><small>Bot-Status</small><h2>Noch nicht verbunden</h2></div>
+  </div>
+  <div class="section"><h2>Systemübersicht</h2><div class="panel">
+   <div class="activity"><span>Moderation</span><span>Bereit zur Einrichtung</span></div>
+   <div class="activity"><span>Ticket-System</span><span>Bereit zur Einrichtung</span></div>
+   <div class="activity"><span>Anti-Raid</span><span>Bereit zur Einrichtung</span></div>
+  </div></div>
+ </section>
+ <section id="moderation" class="page"><div class="panel"><h2>🛡 Moderation</h2><p>Verwalte die Moderationsfunktionen deines Bots.</p><button class="action" onclick="alert('Moderation wird später verbunden.')">Einstellungen öffnen</button></div><div class="panel"><h3>Geplante Funktionen</h3><p>Ban · Kick · Timeout · Warn · Strike</p></div></section>
+ <section id="tickets" class="page"><div class="panel"><h2>🎫 Ticket-System</h2><p>Konfiguriere das Ticket-System deines Discord-Servers.</p><button class="action" onclick="alert('Tickets werden später verbunden.')">Einstellungen öffnen</button></div><div class="panel"><h3>Geplante Funktionen</h3><p>Ticket-Nachrichten · Support-Rollen · Schließen · Claim</p></div></section>
+ <section id="security" class="page"><div class="panel"><h2>🔒 Sicherheit</h2><p>Die Sicherheitsfunktionen von Orbex.</p><button class="action" onclick="alert('Sicherheit wird später verbunden.')">Einstellungen öffnen</button></div><div class="panel"><h3>Geplante Funktionen</h3><p>Anti-Raid · Anti-Nuke · Lockdown</p></div></section>
+ <section id="settings" class="page"><div class="panel"><h2>⚙ Einstellungen</h2><p>Dashboard- und Bot-Einstellungen.</p></div><div class="panel"><h3>Orbex</h3><p>Version 1.0 · Dashboard-Vorschau</p></div></section>
+ <footer>ORBEX © 2026 · BOT CONTROL PANEL</footer>
+</main>
+</div>
+<script>
+function showPage(id,button){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.querySelectorAll('.nav').forEach(b=>b.classList.remove('active'));
+ document.getElementById(id).classList.add('active');button.classList.add('active');
+ const titles={home:'Übersicht',moderation:'Moderation',tickets:'Tickets',security:'Sicherheit',settings:'Einstellungen'};
+ document.getElementById('pageTitle').textContent=titles[id];
+}
+</script>
+</body>
+</html>
